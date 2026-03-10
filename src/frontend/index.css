@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-VariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora-VariableFont_wght.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark editorial theme — deep navy + electric teal + golden amber */
+    --background: 0.11 0.025 260;
+    --foreground: 0.94 0.01 260;
+    --card: 0.15 0.03 255;
+    --card-foreground: 0.94 0.01 260;
+    --popover: 0.15 0.03 255;
+    --popover-foreground: 0.94 0.01 260;
+    --primary: 0.72 0.18 195;
+    --primary-foreground: 0.1 0.03 260;
+    --secondary: 0.2 0.04 260;
+    --secondary-foreground: 0.94 0.01 260;
+    --muted: 0.2 0.025 258;
+    --muted-foreground: 0.62 0.02 258;
+    --accent: 0.78 0.17 55;
+    --accent-foreground: 0.1 0.03 260;
+    --destructive: 0.62 0.22 25;
+    --destructive-foreground: 0.97 0.005 0;
+    --border: 0.22 0.03 258;
+    --input: 0.2 0.03 258;
+    --ring: 0.72 0.18 195;
+    --radius: 0.75rem;
+    --chart-1: 0.72 0.18 195;
+    --chart-2: 0.78 0.17 55;
+    --chart-3: 0.65 0.2 280;
+    --chart-4: 0.7 0.18 145;
+    --chart-5: 0.62 0.22 25;
+    --sidebar: 0.13 0.028 258;
+    --sidebar-foreground: 0.94 0.01 260;
+    --sidebar-primary: 0.72 0.18 195;
+    --sidebar-primary-foreground: 0.1 0.03 260;
+    --sidebar-accent: 0.18 0.03 258;
+    --sidebar-accent-foreground: 0.94 0.01 260;
+    --sidebar-border: 0.22 0.03 258;
+    --sidebar-ring: 0.72 0.18 195;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, oklch(0.72 0.18 195 / 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, oklch(0.65 0.2 280 / 0.05) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: oklch(var(--card) / 0.6);
+    backdrop-filter: blur(16px);
+    border: 1px solid oklch(var(--border) / 0.7);
+  }
+
+  .glow-teal {
+    box-shadow: 0 0 20px oklch(0.72 0.18 195 / 0.25), 0 0 60px oklch(0.72 0.18 195 / 0.1);
+  }
+
+  .glow-amber {
+    box-shadow: 0 0 20px oklch(0.78 0.17 55 / 0.3);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, oklch(0.72 0.18 195), oklch(0.65 0.2 280));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-amber {
+    background: linear-gradient(135deg, oklch(0.88 0.18 80), oklch(0.78 0.17 55));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    border-color: oklch(0.72 0.18 195 / 0.5);
+    box-shadow: 0 20px 40px oklch(0 0 0 / 0.4), 0 0 30px oklch(0.72 0.18 195 / 0.15);
+  }
+
+  .aurora-bg {
+    background:
+      radial-gradient(ellipse 100% 80% at 20% 10%, oklch(0.72 0.18 195 / 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse 80% 60% at 80% 20%, oklch(0.65 0.2 280 / 0.12) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 80% at 50% 100%, oklch(0.78 0.17 55 / 0.05) 0%, transparent 50%),
+      oklch(0.11 0.025 260);
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--muted)) transparent;
+  }
+}
